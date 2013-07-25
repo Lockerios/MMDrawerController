@@ -106,9 +106,10 @@
             
             overshootTransform = CATransform3DTranslate(overshootTransform, scalingModifier*maxDrawerWidth/2, 0.f, 0.f);
             swingingDoorTransform = overshootTransform;
+            [sideDrawerViewController.view.layer setTransform:swingingDoorTransform];
         }
-        
-        [sideDrawerViewController.view.layer setTransform:swingingDoorTransform];
+#warning mark here.
+//        [sideDrawerViewController.view.layer setTransform:swingingDoorTransform];
     };
     return visualStateBlock;
 }
@@ -129,6 +130,7 @@
                 transform = CATransform3DMakeScale(percentVisible, 1.f, 1.f);
                 transform = CATransform3DTranslate(transform, drawerController.maximumLeftDrawerWidth*(percentVisible-1.f)/2, 0.f, 0.f);
             }
+            [sideDrawerViewController.view.layer setTransform:transform];
         }
         else if(drawerSide == MMDrawerSideRight){
             sideDrawerViewController = drawerController.rightDrawerViewController;
@@ -140,9 +142,10 @@
                 transform = CATransform3DMakeScale(percentVisible, 1.f, 1.f);
                 transform = CATransform3DTranslate(transform, -drawerController.maximumRightDrawerWidth*(percentVisible-1.f)/2, 0.f, 0.f);
             }
+            [sideDrawerViewController.view.layer setTransform:transform];
         }
-        
-        [sideDrawerViewController.view.layer setTransform:transform];
+#warning here.
+//        [sideDrawerViewController.view.layer setTransform:transform];
     };
     return visualStateBlock;
 }
